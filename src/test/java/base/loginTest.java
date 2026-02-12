@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class loginTest extends baseTest {
-
+    @Override
     public void setup() {
 
         ChromeOptions options = new ChromeOptions();
