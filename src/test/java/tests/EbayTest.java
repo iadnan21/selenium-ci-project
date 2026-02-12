@@ -4,20 +4,21 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 
-public class EbayTest {
-    public static void main(String[] args) throws InterruptedException {
-        WebDriver driver = new ChromeDriver();
+class EbayTest {
+    static WebDriver driver = new ChromeDriver();
+    public static void main(String[] args) {
         driver.get("https://www.ebay.com/");
-        JavascriptExecutor js = (JavascriptExecutor) driver;
         driver.findElement(By.cssSelector("#gh-ac")).sendKeys("OnePlus6T");
-        Thread.sleep(2000);
-        driver.findElement(By.cssSelector(".gh-search-button.btn.btn--primary")).click();
         ((JavascriptExecutor) driver).executeScript("window.scroll(0,1000)");
-        driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+    }
+    @Test
+    public void quit(){
+        driver.quit();
     }
 }
 
